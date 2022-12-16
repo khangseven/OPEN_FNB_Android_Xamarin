@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPEN_FNB_Android.View.Home"
+             Title="Trang chủ"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="logo.png" 
+                   Scale="1"
+                   x:Name="logo"
+                   WidthRequest="100"
+                   HeightRequest="300"/>
+            <Label Text="Tên người dùng: khang"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="0,0,0,20"
+                    TextColor="Black"
+                   
+                   x:Name="username"/>
+            <Button Text="Bàn" 
+                    x:Name="btn_table"
+                    BackgroundColor="DodgerBlue"
+                    Margin="40,0,40,0"
+                    Clicked="btn_table_Clicked"/>
+            <Button Text="Mang về" 
+                    x:Name="btn_taw"
+                    BackgroundColor="LightGreen"
+                    Margin="40,0,40,0"
+                    Clicked="btn_taw_Clicked"/>
+            <Button Text="Khuyến mãi sản phẩm" 
+                    x:Name="btn_id"
+                    BackgroundColor="Gold"
+                    Margin="40,0,40,0"
+                    Clicked="btn_id_Clicked"/>
+            <Button Text="Khuyến mãi hóa đơn" 
+                    x:Name="btn_bd"
+                    BackgroundColor="Tomato"
+                    Margin="40,0,40,0"
+                    Clicked="btn_bd_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

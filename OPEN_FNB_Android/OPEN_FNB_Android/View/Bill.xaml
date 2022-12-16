@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPEN_FNB_Android.View.Bill"
+             Title="Đang tải...">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="20,10,20,0"
+                  HeightRequest="100"
+                  MinimumHeightRequest="100"
+                  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Bàn: " 
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <Label Text="Người lập: " 
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <Label Text="Giờ vào: " 
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <Label Text="Bàn" 
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       x:Name="lb_table"/>
+                <Label Text="Khang" 
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       FontSize="20"
+                       FontAttributes="none"
+                       x:Name="lb_username"/>
+                <Label Text="7h32p" 
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="20"
+                       FontAttributes="Italic"
+                       x:Name="lb_time"/>
+            </Grid>
+            
+            <Grid Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="180" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Danh sách sản phẩm" 
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="18"
+                            FontAttributes="Bold,Italic"
+                            Padding="25,0,0,0"
+                           VerticalOptions="Center"/>
+                <Button Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="Start"
+                            WidthRequest="100"
+                            HorizontalOptions="Start"
+                            HeightRequest="31"
+                            Text="THÊM SP"
+                            FontSize="10"
+                            BackgroundColor="DarkSeaGreen"
+                            Clicked="AddItemToBill">
+                            
+                </Button>
+            </Grid>
+            <ScrollView >
+                <StackLayout x:Name="stack"
+                         Padding="20,10,0,10"
+                         BackgroundColor="Beige"
+                         
+                        >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0"
+                                         Grid.Row="0"
+                                         VerticalOptions="Center"
+                                         >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="35" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding item_details.name}"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            HorizontalOptions="Start"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           TextColor="CadetBlue"
+                                           ></Label>
+                                        <Label Text="x"
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                HorizontalOptions="Start"
+                                               FontAttributes="None"
+                                               FontSize="18"
+                                               VerticalOptions="Center"
+                                               TextColor="Orange"
+                                               ></Label>
+                                        <Label Text="{Binding amount}"
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                HorizontalOptions="End"
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                               TextColor="Orange"
+                                               VerticalOptions="Center"></Label>
+                                    </Grid>
+                                </StackLayout>
+
+                                <StackLayout BindableLayout.ItemsSource="{Binding discounts}"
+                                         Grid.Column="0"
+                                         Grid.Row="1"
+                                         Margin="0"
+                                         Padding="0"
+                                         >
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="200" />
+                                                    <ColumnDefinition Width="30" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Label Text="{Binding itemDiscount.name}"
+                                                   Grid.Column="1"
+                                                   Grid.Row="1"
+                                                   HorizontalOptions="End"
+                                                   FontSize="16"
+                                                   FontAttributes="Italic"></Label>
+                                                <Label Text="{Binding value}"
+                                                   Grid.Column="2"
+                                                   Grid.Row="1"
+                                                   FontSize="16"
+                                                   HorizontalOptions="Start"></Label>
+                                                <Label Text="%"
+                                                   Grid.Column="2"
+                                                   Grid.Row="1"
+                                                   FontSize="16"
+                                                   HorizontalOptions="End"></Label>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+
+                                <StackLayout
+                                Grid.Column="0"
+                                Grid.Row="2">
+                                    <Grid>
+                                        <Button Grid.Row="0"
+                                                Grid.Column="0"
+                                                HorizontalOptions="Center"
+                                                WidthRequest="50"
+                                                VerticalOptions="Center"
+                                                HeightRequest="30"
+                                                Text="Hủy"
+                                                FontSize="10"
+                                                BindingContext="{Binding .}"
+                                                Clicked="DeleteBillDetails"
+                                                BackgroundColor="Tomato">
+                                        </Button>
+                                        <Button Grid.Row="0"
+                                                Grid.Column="1"
+                                                HorizontalOptions="Center"
+                                                WidthRequest="50"
+                                                VerticalOptions="Center"
+                                                HeightRequest="30"
+                                                Text="SL"
+                                                FontSize="10"
+                                                BindingContext="{Binding .}"
+                                                Clicked="ChangeBillDetails"
+                                                BackgroundColor="DodgerBlue"
+                                                >
+                                        </Button>
+                                        <Button Grid.Row="0"
+                                                Grid.Column="2"
+                                                HorizontalOptions="Center"
+                                                WidthRequest="50"
+                                                VerticalOptions="Center"
+                                                HeightRequest="30"
+                                                Text="KM"
+                                                FontSize="10"
+                                                BindingContext="{Binding .}"
+                                                Clicked="ChangeBillDetailsDiscount"
+                                                BackgroundColor="GreenYellow">
+                                        </Button>
+                                        <Label Text="{Binding last_price}"
+                                       Grid.Column="3"
+                                       Grid.Row="0"
+                                       HorizontalOptions="End"
+                                           FontSize="18"
+                                               TextColor="red"></Label>
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout Margin="0,10,0,0">
+                <Grid Margin="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="180" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Khuyến mãi hóa đơn" 
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="18"
+                            FontAttributes="Bold,Italic"
+                            Padding="25,0,0,0"
+                           VerticalOptions="Center"/>
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="Start"
+                            WidthRequest="100"
+                            HorizontalOptions="Start"
+                            HeightRequest="31"
+                            Text="Cập nhật"
+                            FontSize="10"
+                            BackgroundColor="DarkSeaGreen"
+                            Clicked="UpdateBillDiscount">
+                        
+                    </Button>
+                </Grid>
+                <ScrollView HeightRequest="100"
+                            MinimumHeightRequest="100"
+                            Margin="0,0,0,0"
+                            >
+                    <StackLayout x:Name="billDiscount"
+                                 BackgroundColor="Beige"
+                                 Padding="25,5,20,5"
+                                 >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding name}"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           FontAttributes="Bold"
+                                           TextColor="CadetBlue"
+                                           ></Label>
+                                    <Label Text="{Binding value}"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           HorizontalOptions="Start"
+                                           TextColor="Red"></Label>
+                                    <Label Text="%"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           HorizontalOptions="End"
+                                           TextColor="Red"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            
+            <Grid VerticalOptions="EndAndExpand"
+                  HorizontalOptions="CenterAndExpand"
+                  Margin="20,0,20,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Tổng tiền: "
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                   Padding="0,0,0,0"
+                   VerticalOptions="EndAndExpand"
+                   />
+                <Label Text="Tổng tiền: "
+                   x:Name="lb_total"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    FontSize="25"
+                    FontAttributes="None"
+                   Padding="25,0,0,0"
+                   TextColor="red"
+                   
+                       />
+
+            </Grid>
+
+            <StackLayout>
+                <Grid VerticalOptions="EndAndExpand"
+                  HorizontalOptions="CenterAndExpand"
+                  Margin="20,0,20,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Thanh Toán"
+                        BackgroundColor="ForestGreen"
+                            TextColor="White"
+                            Clicked="DoPayment">
+                    </Button>
+                    <Button Grid.Column="1"
+                        Grid.Row="0"
+                        Text="Chuyển bàn"
+                            BackgroundColor="Pink"
+                            TextColor="White"
+                            Clicked="ChangeTable">
+    
+                    </Button>
+                    <Button Grid.Column="2"
+                        Grid.Row="0"
+                        Text="Phụ thu"
+                            BackgroundColor="Orange"
+                            TextColor="White"
+                            Clicked="AddExtraFee">
+
+                    </Button>
+                    <Button Grid.Column="3"
+                        Grid.Row="0"
+                        Text="Hủy"
+                            BackgroundColor="Tomato"
+                            TextColor="White"
+                            Clicked="CancelBill">
+
+                    </Button>
+
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

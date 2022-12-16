@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPEN_FNB_Android.View.Login"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" >
+    <ContentPage.Content >
+        <StackLayout 
+            Margin="20" 
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start"
+            >
+            
+            <Image Source="logo.png" 
+                   Scale="1"
+                   x:Name="logo"
+                   WidthRequest="300"/>
+
+            <Label Text="Đăng nhập" 
+                   HorizontalTextAlignment="Center"
+                   FontSize="30"
+                   TextColor="DodgerBlue"/>
+            
+            <Label Text="Tên" 
+                   
+                   />
+            <Editor x:Name="tb_name"/>
+            
+
+            <Label Text="Mật khẩu" 
+                   
+                   />
+            <Entry x:Name="tb_pass" IsPassword="True"/>
+
+            <Button Text="Đăng nhập" 
+                    x:Name="btn_login" 
+                    BackgroundColor="DodgerBlue"
+                    Clicked="btn_login_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

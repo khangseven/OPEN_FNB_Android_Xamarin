@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPEN_FNB_Android.View.ChangeItemDiscount"
+             Title="Chỉnh sửa khuyến mãi sản phẩm">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tìm được 0 khuyến mãi"
+                   x:Name="lb_title"
+                   FontSize="20"
+                   FontAttributes="bold"
+                   HorizontalOptions="Center"
+                   Padding="20"></Label>
+            <StackLayout x:Name="itemDiscount">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0"
+                                      Grid.Row="0"
+                                      IsChecked="{Binding dathem}"
+                                      CheckedChanged="CheckBox_CheckedChanged"
+                                      >
+                            </CheckBox>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding itemDiscount.name}"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="HotPink">
+                            </Label>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding itemDiscount.info}"
+                                   FontAttributes="Italic">
+                            </Label>
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding value}"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="HotPink">
+                            </Label>
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="%"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="HotPink">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

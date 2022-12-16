@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPEN_FNB_Android.View.ViewItemDiscount"
+             Title="Danh sách khuyến mãi sản phẩm">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tìm được 0 khuyến mãi"
+                   x:Name="lb_title"
+                   FontSize="20"
+                   FontAttributes="bold"
+                   HorizontalOptions="Center"
+                   Padding="20"></Label>
+            <StackLayout x:Name="itemDiscount"
+                         Margin="20,0,20,0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="{Binding name}"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="HotPink"
+                                   >
+                            </Label>
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="{Binding info}"
+                                   FontAttributes="Italic">
+                            </Label>
+                            <Button Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="xem"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                    WidthRequest="80"
+                                    HeightRequest="40"
+                                   TextColor="HotPink"
+                                    Clicked="Button_Clicked">
+                            </Button>
+                           
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
